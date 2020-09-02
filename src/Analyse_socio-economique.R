@@ -50,14 +50,32 @@ umic <- pov %>% filter(income == "Upper middle income")
 
 # ---- Graphiques sur la distribution de la pauvreté ----
 
-ggplot(data = pov, mapping = aes(x = GDP_per_capita, y = pov3.20, colour = sids)) + 
-  scale_x_log10() + geom_point(alpha = 0.2) + 
-  xlab("GDP per capita, PPP (constant 2017 international $)") +
-  ylab("Percentage of the population living at $3.20 a day (2011 PPP)") +
-  facet_wrap(vars(income)) +
-  geom_smooth()
-  
+g1 <- ggplot(data = lic, mapping = aes(x = GDP_per_capita, y = pov1.90, colour = sids)) + 
+  scale_x_log10() + geom_point() + 
+  xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
+  ylab("Percentage") +
+  ggtitle("Proportion of the population living at $1.90 a day in LICs", 
+          subtitle = "Constant 2011 dollars, at PPP") +
+  theme_minimal()
 
+g2 <- ggplot(data = lmic, mapping = aes(x = GDP_per_capita, y = pov3.20, colour = sids)) + 
+  scale_x_log10() + geom_point() + 
+  xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
+  ylab("Percentage") +
+  geom_smooth(method = "lm") + 
+  ggtitle("Proportion of the population living at $3.20 a day in LMIC", 
+          subtitle = "Constant 2011 dollars, at PPP") +
+  theme_minimal()
+  
+g3 <- ggplot(data = umic, mapping = aes(x = GDP_per_capita, y = pov5.50, colour = sids)) + 
+  scale_x_log10() +
+  xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
+  ylab("Percentage") +
+  geom_point(aes(x = GDP_per_capita, y = pov5.50, colour = sids)) +
+  geom_smooth(method = "lm") + 
+  ggtitle("Proportion of the population living at $5.50 a day in UMICs", 
+          subtitle = "Constant 2011 dollars, at PPP") +
+  theme_minimal()
 
 
   
