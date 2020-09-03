@@ -19,10 +19,16 @@ z$Code <- as.numeric(z$Code)
 
 which(z$Code > 1000) # Codes above 1000 denote a regrouping of countries
 # We must capture only those between header 2050 and the end of the table.
+z %>% filter(Code > 1000)
 
-sids <- z[(which(z$Code == 2250) + 1) : dim(z)[1], ]
+# La liste de la CNUCED --  ce n'est pas celle qu'on utilise
+# sids <- z[(which(z$Code == 2231) + 1):(which(z$Code == 2250) - 1) , ]
+
+# La liste de UNOHRLLS
+sids <- z[(which(z$Code == 2250) + 1):dim(z)[1], ]
 sids <- rename(sids, un = Code)
 sids <- rename(sids, un.name.en = Label)
+sids <- sids %>% filter(un < 1000)
 rm(z)
 
 # Converting UN country names & codes to WB
@@ -33,5 +39,4 @@ sids$iso3c <- countrycode(sids$un, origin = "un", destination = "iso3c")
 sids <- sids[complete.cases(sids), ] # Removes what doesn't have a WB equivalent
 cache("sids")
 rm(destfile)
-rm(index)
 rm(url)
