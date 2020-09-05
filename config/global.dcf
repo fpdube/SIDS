@@ -8,8 +8,8 @@ munging: FALSE
 logging: FALSE
 logging_level: INFO
 load_libraries: TRUE
-libraries: reshape2, plyr, tidyverse, stringr, lubridate, ggrepel, 
-          WDI, wbstats, countrycode, feather, readxl
+libraries: reshape2, plyr, tidyverse, stringr, lubridate, hrbrthemes, ggrepel, 
+          WDI, wbstats, countrycode, feather, readxl, RColorBrewer
 as_factors: FALSE
 tables_type: tibble
 attach_internal_libraries: FALSE

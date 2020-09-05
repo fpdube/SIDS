@@ -57,13 +57,14 @@ pov_restreint <-  pov %>% group_by(country) %>% arrange(year) %>% slice_tail()
 p0 <- ggplot(data = pov_restreint, mapping = aes(x = GDP_per_capita, y = pov3.20, colour = SIDS)) + 
   scale_x_log10() + 
   geom_point(alpha=0.5) + 
-  geom_text_repel(aes(label = label), data = pov_restreint_sids) +
   geom_smooth(method = "glm") +
   xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
   ylab("Percentage") +
   ggtitle("SIDS have slightly less income poverty at similar income per capita", 
           subtitle = "Proportion of the population living at $3.20 a day in developing countries") +
-  theme_minimal()
+ # scale_colour_viridis(option = "C", discrete = TRUE) +
+  scale_colour_evo("bleu_orange") +
+  theme_ipsum()
 p0
 
 
@@ -108,14 +109,15 @@ gender_restreint_sids <- gender_restreint %>% filter(SIDS == "SIDS")
 
 g0 <- ggplot(data = gender_restreint, mapping = aes(x = GDP_per_capita, y = wbl_index, colour = SIDS)) + 
   scale_x_log10() + 
-  geom_point(alpha = 0.5) + 
+  geom_point(alpha = 0.3) + 
+  geom_point(data = gender_restreint_sids) +
   geom_smooth(method = "lm") +
-  geom_text_repel(aes(label = label), data = gender_restreint_sids) +
   xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
   ylab("Women, Business, and the Law Index (WB)") +
   ggtitle("SIDS tend to lower scores on gender equality at similar income per capita...", 
-          subtitle = "but their relatively poor perfomance reverses as they become richer") +
-  theme_minimal()
+          subtitle = "... but their relatively poor perfomance reverses as they become richer") +
+  scale_colour_evo("bleu_orange") +
+  theme_ipsum()
 g0
 
 
