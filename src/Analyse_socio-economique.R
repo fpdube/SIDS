@@ -48,19 +48,16 @@ pov_complet <- pov
 pov <- pov %>% filter(income != "High income")
 pov <- pov[complete.cases(pov), ]
 
-# On crée une version de l'ensembe de données avec uniquement la donnée la plus récente
+# On crée un ensemble ne comportant que la mesure la plus récente pour chaque pays
 pov_restreint <-  pov %>% group_by(country) %>% arrange(year) %>% slice_tail()
 
-# On crée trois sous-ensembles: lic, lmic, umic
-lic <- pov %>% filter(income == "Low income")
-lmic <- pov %>% filter(income == "Lower middle income")
-umic <- pov %>% filter(income == "Upper middle income")
 
 # ---- Graphiques sur la distribution de la pauvreté ----
 
 p0 <- ggplot(data = pov_restreint, mapping = aes(x = GDP_per_capita, y = pov3.20, colour = SIDS)) + 
   scale_x_log10() + 
   geom_point(alpha=0.5) + 
+  geom_text_repel(aes(label = label), data = pov_restreint_sids) +
   geom_smooth(method = "glm") +
   xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
   ylab("Percentage") +
@@ -68,33 +65,6 @@ p0 <- ggplot(data = pov_restreint, mapping = aes(x = GDP_per_capita, y = pov3.20
           subtitle = "Proportion of the population living at $3.20 a day in developing countries") +
   theme_minimal()
 p0
-
-p1 <- ggplot(data = lic, mapping = aes(x = GDP_per_capita, y = pov1.90, colour = sids)) + 
-  scale_x_log10() + geom_point() + 
-  xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
-  ylab("Percentage") +
-  ggtitle("Proportion of the population living at $1.90 a day in LICs", 
-          subtitle = "Constant 2011 dollars, at PPP") +
-  theme_minimal()
-
-p2 <- ggplot(data = lmic, mapping = aes(x = GDP_per_capita, y = pov3.20, colour = sids)) + 
-  scale_x_log10() + geom_point() + 
-  xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
-  ylab("Percentage") +
-  geom_smooth(method = "lm") + 
-  ggtitle("Proportion of the population living at $3.20 a day in LMIC", 
-          subtitle = "Constant 2011 dollars, at PPP") +
-  theme_minimal()
-  
-p3 <- ggplot(data = umic, mapping = aes(x = GDP_per_capita, y = pov5.50, colour = sids)) + 
-  scale_x_log10() +
-  xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
-  ylab("Percentage") +
-  geom_point(aes(x = GDP_per_capita, y = pov5.50, colour = sids)) +
-  geom_smooth(method = "lm") + 
-  ggtitle("Proportion of the population living at $5.50 a day in UMICs", 
-          subtitle = "Constant 2011 dollars, at PPP") +
-  theme_minimal()
 
 
   # ---- Égalité entre les sexes ----
@@ -131,12 +101,7 @@ gender$pov5.50 <- NULL
 gender_complet <- gender
 gender <- gender[complete.cases(gender), ]
 
-# On crée trois sous-ensembles: lic, lmic, umic
-g_lic <- gender %>% filter(income == "Low income")
-g_lmic <- gender %>% filter(income == "Lower middle income")
-g_umic <- gender %>% filter(income == "Upper middle income")
-
-# On crée également un ensemble ne comportant que la mesure la plus récente pour chaque pays
+# On crée un ensemble ne comportant que la mesure la plus récente pour chaque pays
 gender_restreint <-  gender %>% group_by(country) %>% arrange(year) %>% slice_tail()
 gender_restreint_sids <- gender_restreint %>% filter(SIDS == "SIDS")
 # ---- Graphiques EFH ----
@@ -145,7 +110,7 @@ g0 <- ggplot(data = gender_restreint, mapping = aes(x = GDP_per_capita, y = wbl_
   scale_x_log10() + 
   geom_point(alpha = 0.5) + 
   geom_smooth(method = "lm") +
-  geom_text(aes(label = label, position_dodge()), data = gender_restreint_sids) +
+  geom_text_repel(aes(label = label), data = gender_restreint_sids) +
   xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
   ylab("Women, Business, and the Law Index (WB)") +
   ggtitle("SIDS tend to lower scores on gender equality at similar income per capita...", 
@@ -154,31 +119,3 @@ g0 <- ggplot(data = gender_restreint, mapping = aes(x = GDP_per_capita, y = wbl_
 g0
 
 
-
-
-g1 <- ggplot(data = g_lmic, mapping = aes(x = GDP_per_capita, y = wbl_index, colour = sids)) + 
-  scale_x_log10() + geom_point() + 
-  xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
-  ylab("WBL Index") +
-  ggtitle("World Bank's Women, Business, and the Law index", 
-          subtitle = "in relatoin to GDP per capital, multiple years") +
-  theme_minimal()
-
-g2 <- ggplot(data = lmic, mapping = aes(x = GDP_per_capita, y = pov3.20, colour = sids)) + 
-  scale_x_log10() + geom_point() + 
-  xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
-  ylab("Percentage") +
-  geom_smooth(method = "lm") + 
-  ggtitle("Proportion of the population living at $3.20 a day in LMIC", 
-          subtitle = "Constant 2011 dollars, at PPP") +
-  theme_minimal()
-
-g3 <- ggplot(data = umic, mapping = aes(x = GDP_per_capita, y = pov5.50, colour = sids)) + 
-  scale_x_log10() +
-  xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
-  ylab("Percentage") +
-  geom_point(aes(x = GDP_per_capita, y = pov5.50, colour = sids)) +
-  geom_smooth(method = "lm") + 
-  ggtitle("Proportion of the population living at $5.50 a day in UMICs", 
-          subtitle = "Constant 2011 dollars, at PPP") +
-  theme_minimal()
