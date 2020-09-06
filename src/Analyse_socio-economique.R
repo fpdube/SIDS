@@ -55,7 +55,11 @@ pov <- pov %>% filter(income != "High income")
 pov <- pov[complete.cases(pov), ]
 
 # On crée un ensemble ne comportant que la mesure la plus récente pour chaque pays
-pov_restreint <-  pov %>% group_by(country) %>% arrange(year) %>% slice_tail()
+pov_restreint <-  pov %>% 
+  group_by(country) %>% 
+  arrange(year) %>% 
+  slice_tail() %>% 
+  ungroup()
 
 
 # ---- Graphiques sur la distribution de la pauvreté ----
@@ -92,28 +96,34 @@ gender_indic <- gender_indic %>% filter(indicator == "SG.LAW.INDX ")
 # gender <- gender %>% filter(region != "Aggregates") # Enlever les agrégats et ne garder que les pays
 # gender[gender$lending == "Not classified", "lending"] <- NA
 
-gender <-  read_csv("./data/WBL50YearPanelDetailsWeb01Jun2020.csv")
-gender <- left_join(pov_complet, gender)
+gender_complet <-  read_csv("./data/WBL50YearPanelDetailsWeb01Jun2020.csv")
+gender_complet <- left_join(pov_complet, gender_complet)
 
 # On nettoie
-gender$un <- NULL
-gender$name <- NULL
-gender$un.name.en <- NULL
-gender <- gender %>% filter(!is.na(income))
-gender$pov1.90 <- NULL
-gender$pov3.20 <- NULL
-gender$pov5.50 <- NULL
+gender_complet$un <- NULL
+gender_complet$name <- NULL
+gender_complet$un.name.en <- NULL
+gender_complet <- gender_complet %>% filter(!is.na(income))
+gender_complet$pov1.90 <- NULL
+gender_complet$pov3.20 <- NULL
+gender_complet$pov5.50 <- NULL
 
 # On ne garde que les cas complets, après avoir sauvegardé
-gender_complet <- gender
+gender <- gender_complet
 gender <- gender[complete.cases(gender), ]
 
 # On crée un ensemble ne comportant que la mesure la plus récente pour chaque pays
-gender_restreint <-  gender %>% group_by(country) %>% arrange(year) %>% slice_tail()
+gender_restreint <-  gender %>%
+  group_by(country) %>% 
+  arrange(year) %>% 
+  slice_tail() %>%
+  ungroup()
 gender_restreint_sids <- gender_restreint %>% filter(SIDS == "SIDS")
+
+
 # ---- Graphiques EFH ----
 
-g0 <- ggplot(data = gender_restreint, mapping = aes(x = GDP_per_capita, y = wbl_index, colour = as.factor(SIDS))) + 
+g0 <- ggplot(data = gender_restreint, mapping = aes(x = GDP_per_capita, y = wbl_index, colour = SIDS)) + 
   scale_x_log10() + 
   geom_point(alpha = 1) + 
   geom_point(data = gender_restreint_sids) +
