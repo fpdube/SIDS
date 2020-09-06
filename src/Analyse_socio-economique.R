@@ -11,40 +11,46 @@ pov_indic <- pov_indic %>% filter(indicator %in% c("SI.POV.DDAY", "SI.POV.LMIC",
 WDIsearch('gdp.*capita.*PPP')
 
 # Pauvreté à 1,90$/j, PPA 2011
-pov <- WDI(indicator = c("pov1.90" = "SI.POV.DDAY", 
-                           "pov3.20" = "SI.POV.LMIC", 
-                           "pov5.50" = "SI.POV.UMIC", 
+pov_complet <- WDI(indicator = c("pov_complet1.90" = "SI.pov_complet.DDAY", 
+                           "pov_complet3.20" = "SI.pov_complet.LMIC", 
+                           "pov_complet5.50" = "SI.pov_complet.UMIC", 
                            "GDP_per_capita" = "NY.GDP.PCAP.PP.KD"),
              start = 1990, 
              end = 2020, 
              extra = TRUE, 
              cache = new_cache)
-pov$capital <- NULL
-pov$longitude <- NULL
-pov$latitude <- NULL
-pov <- pov %>% filter(region != "Aggregates") # Enlever les agrégats et ne garder que les pays
-pov[pov$lending == "Not classified", "lending"] <- NA
+pov_complet$capital <- NULL
+pov_complet$longitude <- NULL
+pov_complet$latitude <- NULL
+pov_complet <- pov_complet %>% filter(region != "Aggregates") # Enlever les agrégats et ne garder que les pays
+pov_complet[pov_complet$lending == "Not classified", "lending"] <- NA
 
 # On croise avec la liste des SIDS
-pov <-  full_join(x = pov, y = sids, by = "iso3c")
-pov$SIDS <- !is.na(pov$un)
-pov[pov$SIDS == TRUE, "SIDS"] <- "SIDS"
-pov[pov$SIDS == FALSE, "SIDS"] <- "Others"
+pov_complet <-  full_join(x = pov_complet, y = sids, by = "iso3c")
+pov_complet$SIDS <- !is.na(pov_complet$un)
+pov_complet[pov_complet$SIDS == TRUE, "SIDS"] <- "SIDS"
+pov_complet[pov_complet$SIDS == FALSE, "SIDS"] <- "Others"
 
 
 # On nettoie
-pov$un <- NULL
-pov$name <- NULL
-pov$un.name.en <- NULL
-pov <- pov %>% filter(!is.na(income))
+pov_complet$un <- NULL
+pov_complet$name <- NULL
+pov_complet$un.name.en <- NULL
+pov_complet <- pov_complet %>% filter(!is.na(income))
 
-# On crée un couple pays-année pour étiquetter le graphique
-pov$label <- paste0("(", pov$iso3c, ", ", pov$year, ")")
+# On crée un couple pays-année pour étiquetter le graphique et on ajuste les facteurs
+pov_complet$label <- paste0("(", pov_complet$iso3c, ", ", pov_complet$year, ")")
+pov_complet$income <- factor(pov_complet$income, labels = c("Low Income", "Lower middle income", 
+                                            "Upper middle income", "High income"), 
+                     ordered = TRUE)
+pov_complet$lending <- factor(pov_complet$lending, levels = c("IDA", "Blend", "IBRD"), ordered = TRUE)
+pov_complet$SIDS <- factor(pov_complet$SIDS, levels = c("SIDS", "Others"), ordered = FALSE)
+pov_complet$region <- factor(pov_complet$region)
 
 # Après avoir confirmé qu'il n'y a pas de situation où on n'a qu'un ou deux des trois mesures de pauvreté
 # (on en 0 ou 3), et qu'il n'y en a que peu où on a les mesures de pauvreté mais que le PIB/hab manque, 
 # on peut éliminer les NA.
-pov_complet <- pov
+pov <- pov_complet
 pov <- pov %>% filter(income != "High income")
 pov <- pov[complete.cases(pov), ]
 
@@ -63,7 +69,7 @@ p0 <- ggplot(data = pov_restreint, mapping = aes(x = GDP_per_capita, y = pov3.20
   ggtitle("SIDS have slightly less income poverty at similar income per capita", 
           subtitle = "Proportion of the population living at $3.20 a day in developing countries") +
  # scale_colour_viridis(option = "C", discrete = TRUE) +
-  scale_colour_evo("bleu_orange") +
+  scale_color_viridis(discrete = TRUE, option = "D") +
   theme_ipsum()
 p0
 
@@ -107,16 +113,16 @@ gender_restreint <-  gender %>% group_by(country) %>% arrange(year) %>% slice_ta
 gender_restreint_sids <- gender_restreint %>% filter(SIDS == "SIDS")
 # ---- Graphiques EFH ----
 
-g0 <- ggplot(data = gender_restreint, mapping = aes(x = GDP_per_capita, y = wbl_index, colour = SIDS)) + 
+g0 <- ggplot(data = gender_restreint, mapping = aes(x = GDP_per_capita, y = wbl_index, colour = as.factor(SIDS))) + 
   scale_x_log10() + 
-  geom_point(alpha = 0.3) + 
+  geom_point(alpha = 1) + 
   geom_point(data = gender_restreint_sids) +
   geom_smooth(method = "lm") +
   xlab("GDP per capita, PPP (constant 2017 international $) (log scale)") +
   ylab("Women, Business, and the Law Index (WB)") +
-  ggtitle("SIDS tend to lower scores on gender equality at similar income per capita...", 
+  ggtitle("SIDS tend to have lower scores on gender equality at similar income...", 
           subtitle = "... but their relatively poor perfomance reverses as they become richer") +
-  scale_colour_evo("bleu_orange") +
+  scale_color_viridis(discrete = TRUE, option = "D") +
   theme_ipsum()
 g0
 
