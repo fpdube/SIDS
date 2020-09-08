@@ -35,6 +35,48 @@ rm(z)
 sids$name <- countrycode(sids$un, origin = "un", destination = "country.name.en")
 sids$iso3c <- countrycode(sids$un, origin = "un", destination = "iso3c")
 
+# Sous-ensemble des PEID du Comité d'aide au développement (OCDE)
+DAC_SIDS <- c(
+  "COM", 
+  "GNB",
+  "STP", 
+  "CPV", 
+  "MDV",
+  "MUS", 
+  "SYC", 
+  "HTI", 
+  "GUY", 
+  "ATG", 
+  "BLZ", 
+  "CUB", 
+  "DMA", 
+  "DOM",
+  "GRD", 
+  "JAM", 
+  "MSR", 
+  "LCA", 
+  "VCT",
+  "SUR", 
+  "KIR", 
+  "SLB", 
+  "SLB", 
+  "TLS",
+  "TUV", 
+  "VUT", 
+  "FSM", 
+  "PNG", 
+  "WSM", 
+  "COK",
+  "FJI",
+  "MHL",
+  "NRU", 
+  "NIU", 
+  "PLW", 
+  "TON"
+)
+sids$dac_sids <- sids$iso3c %in% DAC_SIDS
+
+
 # Cleaning up
 sids <- sids[complete.cases(sids), ] # Removes what doesn't have a WB equivalent
 cache("sids")
