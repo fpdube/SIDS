@@ -70,9 +70,10 @@ peid <- left_join(peid, temp) %>%
 peid <- peid %>% filter(region != "Aggregates") # Enlever les agrégats et ne garder que les pays
 
 # ---- On fait des colonnes de facteurs ----
-peid$income <- factor(peid$income, labels = c("Low Income", "Lower middle income",
-                                                            "Upper middle income", "High income"),
-                             ordered = FALSE)
+peid$income <- factor(peid$incom, ordered = FALSE)
+peid$income <- ordered(peid$income, levels = c( "Low Income", "Lower middle income",
+                                               "Upper middle income", 
+                                               "High income"))
 peid$lending <- factor(peid$lending, levels = c("IDA", "Blend", "IBRD"), ordered = FALSE)
 peid$SIDS <- factor(peid$SIDS, levels = c("SIDS", "Others"), ordered = FALSE)
 peid$region <- factor(peid$region)
