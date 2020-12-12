@@ -39,4 +39,3 @@ graphe <- ggplot(corruption_restreint) +
 nom_fichier <- "SIDS_corruption.png"
 ggsave(graphe, filename = nom_fichier, 
        path = "./plots", height = 12, width = 18, units = "cm", dpi = "print")
-

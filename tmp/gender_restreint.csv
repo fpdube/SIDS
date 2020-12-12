@@ -1,0 +1,132 @@
+"","iso2c","country","GDP_per_capita","year","iso3c","region","income","lending","SIDS","label","wbl_index"
+"1","AF","Afghanistan",2202.27848949912,2019,"AFG","South Asia","Lower middle income","IDA","Others","(AFG, 2019)",38.1
+"2","AL","Albania",13961.7965978885,2019,"ALB","Europe & Central Asia","High income","IBRD","Others","(ALB, 2019)",91.3
+"3","DZ","Algeria",11349.7005682198,2019,"DZA","Middle East & North Africa","Upper middle income","IBRD","Others","(DZA, 2019)",57.5
+"4","AO","Angola",6653.90767287624,2019,"AGO","Sub-Saharan Africa","Upper middle income","IBRD","Others","(AGO, 2019)",73.1
+"5","AG","Antigua and Barbuda",21908.4585035162,2019,"ATG","Latin America & Caribbean","Low Income","IBRD","SIDS","(ATG, 2019)",66.3
+"6","AR","Argentina",22033.9453093203,2019,"ARG","Latin America & Caribbean","High income","IBRD","Others","(ARG, 2019)",76.3
+"7","AM","Armenia",13653.7495326269,2019,"ARM","Europe & Central Asia","High income","IBRD","Others","(ARM, 2019)",82.5
+"8","AZ","Azerbaijan",14403.8504687949,2019,"AZE","Europe & Central Asia","High income","IBRD","Others","(AZE, 2019)",78.8
+"9","BD","Bangladesh",4753.72592342133,2019,"BGD","South Asia","Upper middle income","IDA","Others","(BGD, 2019)",49.4
+"10","BY","Belarus",19149.6378488406,2019,"BLR","Europe & Central Asia","High income","IBRD","Others","(BLR, 2019)",75.6
+"11","BZ","Belize",7004.91230122915,2019,"BLZ","Latin America & Caribbean","High income","IBRD","SIDS","(BLZ, 2019)",79.4
+"12","BJ","Benin",3287.30953781495,2019,"BEN","Sub-Saharan Africa","Upper middle income","IDA","Others","(BEN, 2019)",74.4
+"13","BT","Bhutan",11345.4449257567,2018,"BTN","South Asia","Upper middle income","IDA","Others","(BTN, 2018)",71.9
+"14","BO","Bolivia",8724.47574033647,2019,"BOL","Latin America & Caribbean","Upper middle income","IBRD","Others","(BOL, 2019)",82.5
+"15","BA","Bosnia and Herzegovina",14894.7866167587,2019,"BIH","Europe & Central Asia","High income","IBRD","Others","(BIH, 2019)",85
+"16","BW","Botswana",17766.4880429157,2019,"BWA","Sub-Saharan Africa","High income","IBRD","Others","(BWA, 2019)",63.8
+"17","BR","Brazil",14651.6161809346,2019,"BRA","Latin America & Caribbean","High income","IBRD","Others","(BRA, 2019)",81.9
+"18","BG","Bulgaria",23091.3421370835,2019,"BGR","Europe & Central Asia","High income","IBRD","Others","(BGR, 2019)",90.6
+"19","BF","Burkina Faso",2189.63101535424,2019,"BFA","Sub-Saharan Africa","Lower middle income","IDA","Others","(BFA, 2019)",76.9
+"20","BI","Burundi",751.663957194118,2019,"BDI","Sub-Saharan Africa","Lower middle income","IDA","Others","(BDI, 2019)",73.1
+"21","CV","Cabo Verde",7171.83946598235,2019,"CPV","Sub-Saharan Africa","Upper middle income","Blend","SIDS","(CPV, 2019)",86.3
+"22","KH","Cambodia",4388.80090863326,2019,"KHM","East Asia & Pacific","Upper middle income","IDA","Others","(KHM, 2019)",75
+"23","CM","Cameroon",3652.68651238746,2019,"CMR","Sub-Saharan Africa","Upper middle income","Blend","Others","(CMR, 2019)",56.9
+"24","CF","Central African Republic",944.868093487866,2019,"CAF","Sub-Saharan Africa","Lower middle income","IDA","Others","(CAF, 2019)",71.3
+"25","TD","Chad",1579.62669496964,2019,"TCD","Sub-Saharan Africa","Lower middle income","IDA","Others","(TCD, 2019)",66.3
+"26","CL","Chile",24226.1508878998,2019,"CHL","Latin America & Caribbean","Low Income","IBRD","Others","(CHL, 2019)",77.5
+"27","CN","China",16116.7042797706,2019,"CHN","East Asia & Pacific","High income","IBRD","Others","(CHN, 2019)",75.6
+"28","CO","Colombia",14730.8849270675,2019,"COL","Latin America & Caribbean","High income","IBRD","Others","(COL, 2019)",81.9
+"29","KM","Comoros",3081.38367697852,2019,"COM","Sub-Saharan Africa","Upper middle income","IDA","SIDS","(COM, 2019)",58.8
+"30","CG","Congo, Rep.",3298.06761863102,2019,"COG","Sub-Saharan Africa","Upper middle income","Blend","Others","(COG, 2019)",46.3
+"31","CR","Costa Rica",19642.4178531668,2019,"CRI","Latin America & Caribbean","High income","IBRD","Others","(CRI, 2019)",80
+"32","CI","Cote d'Ivoire",5238.26085646938,2019,"CIV","Sub-Saharan Africa","Upper middle income","IDA","Others","(CIV, 2019)",78.1
+"33","HR","Croatia",28508.5166054649,2019,"HRV","Europe & Central Asia","Low Income","IBRD","Others","(HRV, 2019)",93.8
+"34","DJ","Djibouti",5519.33288841046,2019,"DJI","Middle East & North Africa","Upper middle income","IDA","Others","(DJI, 2019)",61.9
+"35","DM","Dominica",12155.558696274,2019,"DMA","Latin America & Caribbean","High income","Blend","SIDS","(DMA, 2019)",62.5
+"36","DO","Dominican Republic",18419.0342630152,2019,"DOM","Latin America & Caribbean","High income","IBRD","SIDS","(DOM, 2019)",86.3
+"37","EC","Ecuador",11375.3311843291,2019,"ECU","Latin America & Caribbean","High income","IBRD","Others","(ECU, 2019)",89.4
+"38","EG","Egypt, Arab Rep.",11763.2536364885,2019,"EGY","Middle East & North Africa","Upper middle income","IBRD","Others","(EGY, 2019)",45
+"39","SV","El Salvador",8775.98651978437,2019,"SLV","Latin America & Caribbean","Upper middle income","IBRD","Others","(SLV, 2019)",88.8
+"40","GQ","Equatorial Guinea",18558.0038515413,2019,"GNQ","Sub-Saharan Africa","High income","IBRD","Others","(GNQ, 2019)",51.9
+"41","SZ","Eswatini",8688.10149293721,2019,"SWZ","Sub-Saharan Africa","Upper middle income","IBRD","Others","(SWZ, 2019)",43.8
+"42","ET","Ethiopia",2219.70879486211,2019,"ETH","Sub-Saharan Africa","Lower middle income","IDA","Others","(ETH, 2019)",71.9
+"43","FJ","Fiji",13853.4285658166,2019,"FJI","East Asia & Pacific","High income","Blend","SIDS","(FJI, 2019)",74.4
+"44","GA","Gabon",14869.7914200483,2019,"GAB","Sub-Saharan Africa","High income","IBRD","Others","(GAB, 2019)",57.5
+"45","GM","Gambia, The",2206.91290564813,2019,"GMB","Sub-Saharan Africa","Lower middle income","IDA","Others","(GMB, 2019)",74.4
+"46","GE","Georgia",15014.2882057699,2019,"GEO","Europe & Central Asia","High income","IBRD","Others","(GEO, 2019)",79.4
+"47","GH","Ghana",5412.62812169616,2019,"GHA","Sub-Saharan Africa","Upper middle income","IDA","Others","(GHA, 2019)",75
+"48","GD","Grenada",17241.5319711333,2019,"GRD","Latin America & Caribbean","High income","Blend","SIDS","(GRD, 2019)",77.5
+"49","GT","Guatemala",8637.55532497518,2019,"GTM","Latin America & Caribbean","High income","IBRD","Others","(GTM, 2019)",70.6
+"50","GN","Guinea",2564.04248270111,2019,"GIN","Sub-Saharan Africa","Lower middle income","IDA","Others","(GIN, 2019)",65
+"51","GW","Guinea-Bissau",1989.36714098892,2019,"GNB","Sub-Saharan Africa","Lower middle income","IDA","SIDS","(GNB, 2019)",42.5
+"52","GY","Guyana",9702.57885742106,2019,"GUY","Latin America & Caribbean","High income","IDA","SIDS","(GUY, 2019)",86.9
+"53","HT","Haiti",1728.91006998723,2019,"HTI","Latin America & Caribbean","Lower middle income","IDA","SIDS","(HTI, 2019)",61.3
+"54","HN","Honduras",5727.97357227863,2019,"HND","Latin America & Caribbean","Upper middle income","IDA","Others","(HND, 2019)",75
+"55","IN","India",6754.28654713666,2019,"IND","South Asia","Upper middle income","IBRD","Others","(IND, 2019)",74.4
+"56","ID","Indonesia",11812.1976430751,2019,"IDN","East Asia & Pacific","High income","IBRD","Others","(IDN, 2019)",64.4
+"57","IR","Iran, Islamic Rep.",14535.8630641234,2017,"IRN","Middle East & North Africa","High income","IBRD","Others","(IRN, 2017)",31.3
+"58","IQ","Iraq",10881.1724564123,2019,"IRQ","Middle East & North Africa","High income","IBRD","Others","(IRQ, 2019)",45
+"59","JM","Jamaica",9761.49852210528,2019,"JAM","Latin America & Caribbean","High income","IBRD","SIDS","(JAM, 2019)",68.1
+"60","JO","Jordan",9906.05376516,2019,"JOR","Middle East & North Africa","High income","IBRD","Others","(JOR, 2019)",31.9
+"61","KZ","Kazakhstan",26351.438640898,2019,"KAZ","Europe & Central Asia","High income","IBRD","Others","(KAZ, 2019)",72.5
+"62","KE","Kenya",4329.87138968635,2019,"KEN","Sub-Saharan Africa","Upper middle income","Blend","Others","(KEN, 2019)",80.6
+"63","KI","Kiribati",2275.17129852978,2019,"KIR","East Asia & Pacific","Upper middle income","IDA","SIDS","(KIR, 2019)",78.8
+"64","KG","Kyrgyz Republic",5253.0974778813,2019,"KGZ","Europe & Central Asia","Upper middle income","IDA","Others","(KGZ, 2019)",76.9
+"65","LA","Lao PDR",7826.38859494102,2019,"LAO","East Asia & Pacific","Upper middle income","IDA","Others","(LAO, 2019)",88.1
+"66","LB","Lebanon",14717.349980936,2019,"LBN","Middle East & North Africa","High income","IBRD","Others","(LBN, 2019)",52.5
+"67","LS","Lesotho",2767.71428076187,2019,"LSO","Sub-Saharan Africa","Upper middle income","IDA","Others","(LSO, 2019)",75.6
+"68","LR","Liberia",1427.8190899409,2019,"LBR","Sub-Saharan Africa","Lower middle income","IDA","Others","(LBR, 2019)",83.8
+"69","LY","Libya",15174.1647543089,2019,"LBY","Middle East & North Africa","High income","IBRD","Others","(LBY, 2019)",50
+"70","MG","Madagascar",1646.22004186235,2019,"MDG","Sub-Saharan Africa","Lower middle income","IDA","Others","(MDG, 2019)",71.9
+"71","MW","Malawi",1059.72349008557,2019,"MWI","Sub-Saharan Africa","Lower middle income","IDA","Others","(MWI, 2019)",80.6
+"72","MY","Malaysia",28350.5902105762,2019,"MYS","East Asia & Pacific","High income","IBRD","Others","(MYS, 2019)",50
+"73","MV","Maldives",18914.3332534306,2019,"MDV","South Asia","High income","IDA","SIDS","(MDV, 2019)",73.8
+"74","ML","Mali",2327.37111964737,2019,"MLI","Sub-Saharan Africa","Lower middle income","IDA","Others","(MLI, 2019)",60.6
+"75","MH","Marshall Islands",3894.17741946459,2018,"MHL","East Asia & Pacific","High income","IDA","SIDS","(MHL, 2018)",58.8
+"76","MR","Mauritania",5197.02886117046,2019,"MRT","Sub-Saharan Africa","Upper middle income","IDA","Others","(MRT, 2019)",45.6
+"77","MU","Mauritius",22989.3416282651,2019,"MUS","Sub-Saharan Africa","Low Income","IBRD","SIDS","(MUS, 2019)",91.9
+"78","MX","Mexico",19746.4356070408,2019,"MEX","Latin America & Caribbean","High income","IBRD","Others","(MEX, 2019)",83.8
+"79","FM","Micronesia, Fed. Sts.",3468.56842089047,2018,"FSM","East Asia & Pacific","Upper middle income","IDA","SIDS","(FSM, 2018)",61.3
+"80","MD","Moldova",13033.8643273329,2019,"MDA","Europe & Central Asia","Upper middle income","IBRD","Others","(MDA, 2019)",84.4
+"81","MN","Mongolia",12309.7714311213,2019,"MNG","East Asia & Pacific","Upper middle income","IBRD","Others","(MNG, 2019)",82.5
+"82","ME","Montenegro",21378.5748311807,2019,"MNE","Europe & Central Asia","High income","IBRD","Others","(MNE, 2019)",81.9
+"83","MA","Morocco",7514.72088116626,2019,"MAR","Middle East & North Africa","Upper middle income","IBRD","Others","(MAR, 2019)",75.6
+"84","MZ","Mozambique",1280.45005257737,2019,"MOZ","Sub-Saharan Africa","Lower middle income","IDA","Others","(MOZ, 2019)",76.9
+"85","MM","Myanmar",5142.15416557764,2019,"MMR","East Asia & Pacific","Upper middle income","IDA","Others","(MMR, 2019)",58.8
+"86","NA","Namibia",9637.18054981639,2019,"NAM","Sub-Saharan Africa","High income","IBRD","Others","(NAM, 2019)",86.3
+"87","NP","Nepal",3416.79128149755,2019,"NPL","South Asia","Upper middle income","IDA","Others","(NPL, 2019)",67.5
+"88","NI","Nicaragua",5407.10470207971,2019,"NIC","Latin America & Caribbean","Upper middle income","IDA","Others","(NIC, 2019)",86.3
+"89","NE","Niger",1219.07688920191,2019,"NER","Sub-Saharan Africa","Lower middle income","IDA","Others","(NER, 2019)",59.4
+"90","NG","Nigeria",5135.49957097093,2019,"NGA","Sub-Saharan Africa","Upper middle income","Blend","Others","(NGA, 2019)",63.1
+"91","MK","North Macedonia",16506.0854835349,2019,"MKD","Europe & Central Asia","High income","IBRD","Others","(MKD, 2019)",85
+"92","PK","Pakistan",4690.48475495074,2019,"PAK","South Asia","Upper middle income","Blend","Others","(PAK, 2019)",49.4
+"93","PW","Palau",18070.0384471317,2018,"PLW","East Asia & Pacific","Low Income","IBRD","SIDS","(PLW, 2018)",58.8
+"94","PA","Panama",31458.6926255213,2019,"PAN","Latin America & Caribbean","Low Income","IBRD","Others","(PAN, 2019)",79.4
+"95","PG","Papua New Guinea",4387.60246863179,2019,"PNG","East Asia & Pacific","Upper middle income","Blend","SIDS","(PNG, 2019)",60
+"96","PY","Paraguay",12684.5961910764,2019,"PRY","Latin America & Caribbean","High income","IBRD","Others","(PRY, 2019)",94.4
+"97","PE","Peru",12847.8852078957,2019,"PER","Latin America & Caribbean","High income","IBRD","Others","(PER, 2019)",95
+"98","PH","Philippines",8908.1759770231,2019,"PHL","East Asia & Pacific","Upper middle income","IBRD","Others","(PHL, 2019)",78.8
+"99","PL","Poland",33086.3903328095,2019,"POL","Europe & Central Asia","Low Income","IBRD","Others","(POL, 2019)",93.8
+"100","RU","Russian Federation",27043.9353888318,2019,"RUS","Europe & Central Asia","High income","IBRD","Others","(RUS, 2019)",73.1
+"101","RW","Rwanda",2226.22075147786,2019,"RWA","Sub-Saharan Africa","Lower middle income","IDA","Others","(RWA, 2019)",78.1
+"102","WS","Samoa",6517.0336685864,2019,"WSM","East Asia & Pacific","High income","IDA","SIDS","(WSM, 2019)",80
+"103","ST","Sao Tome and Principe",3963.78357594781,2019,"STP","Sub-Saharan Africa","Upper middle income","IDA","SIDS","(STP, 2019)",74.4
+"104","SN","Senegal",3394.86880772168,2019,"SEN","Sub-Saharan Africa","Upper middle income","IDA","Others","(SEN, 2019)",63.8
+"105","RS","Serbia",18179.7749824078,2019,"SRB","Europe & Central Asia","High income","IBRD","Others","(SRB, 2019)",93.8
+"106","SC","Seychelles",29055.7486612807,2019,"SYC","Sub-Saharan Africa","Low Income","IBRD","SIDS","(SYC, 2019)",76.3
+"107","SL","Sierra Leone",1718.37074104107,2019,"SLE","Sub-Saharan Africa","Lower middle income","IDA","Others","(SLE, 2019)",63.1
+"108","SB","Solomon Islands",2367.40384577606,2019,"SLB","East Asia & Pacific","Upper middle income","IDA","SIDS","(SLB, 2019)",56.9
+"109","ZA","South Africa",12481.8128680216,2019,"ZAF","Sub-Saharan Africa","High income","IBRD","Others","(ZAF, 2019)",88.1
+"110","LK","Sri Lanka",13078.0981150723,2019,"LKA","South Asia","Upper middle income","IBRD","Others","(LKA, 2019)",65.6
+"111","KN","St. Kitts and Nevis",26356.5509436038,2019,"KNA","Latin America & Caribbean","Low Income","IBRD","Others","(KNA, 2019)",71.3
+"112","LC","St. Lucia",15448.7940668927,2019,"LCA","Latin America & Caribbean","High income","Blend","SIDS","(LCA, 2019)",83.8
+"113","VC","St. Vincent and the Grenadines",12466.234639173,2019,"VCT","Latin America & Caribbean","High income","Blend","SIDS","(VCT, 2019)",68.1
+"114","SD","Sudan",3958.46838961531,2019,"SDN","Sub-Saharan Africa","Lower middle income","IDA","Others","(SDN, 2019)",29.4
+"115","SR","Suriname",16328.6861156777,2019,"SUR","Latin America & Caribbean","High income","IBRD","SIDS","(SUR, 2019)",66.3
+"116","TJ","Tajikistan",3379.74869663112,2019,"TJK","Europe & Central Asia","Lower middle income","IDA","Others","(TJK, 2019)",78.8
+"117","TZ","Tanzania",2660.42033801671,2019,"TZA","Sub-Saharan Africa","Upper middle income","IDA","Others","(TZA, 2019)",84.4
+"118","TH","Thailand",18463.093753334,2019,"THA","East Asia & Pacific","High income","IBRD","Others","(THA, 2019)",75
+"119","TG","Togo",1595.92923015438,2019,"TGO","Sub-Saharan Africa","Lower middle income","IDA","Others","(TGO, 2019)",84.4
+"120","TO","Tonga",6266.90311383932,2018,"TON","East Asia & Pacific","High income","IDA","SIDS","(TON, 2018)",58.8
+"121","TT","Trinidad and Tobago",26175.951728288,2019,"TTO","Latin America & Caribbean","Low Income","IBRD","Others","(TTO, 2019)",75
+"122","TN","Tunisia",10755.5799095159,2019,"TUN","Middle East & North Africa","Upper middle income","IBRD","Others","(TUN, 2019)",70
+"123","TR","Turkey",28167.397380045,2019,"TUR","Europe & Central Asia","High income","IBRD","Others","(TUR, 2019)",82.5
+"124","UG","Uganda",2181.24784253599,2019,"UGA","Sub-Saharan Africa","Lower middle income","IDA","Others","(UGA, 2019)",70
+"125","UA","Ukraine",12810.2894546923,2019,"UKR","Europe & Central Asia","Upper middle income","IBRD","Others","(UKR, 2019)",78.8
+"126","UY","Uruguay",21561.0620529177,2019,"URY","Latin America & Caribbean","Low Income","IBRD","Others","(URY, 2019)",88.8
+"127","UZ","Uzbekistan",6998.70505055973,2019,"UZB","Europe & Central Asia","Upper middle income","Blend","Others","(UZB, 2019)",67.5
+"128","VU","Vanuatu",3143.62763606102,2019,"VUT","East Asia & Pacific","Upper middle income","IDA","SIDS","(VUT, 2019)",58.1
+"129","VN","Vietnam",8041.17855081878,2019,"VNM","East Asia & Pacific","Upper middle income","IBRD","Others","(VNM, 2019)",78.8
+"130","ZM","Zambia",3479.49221534276,2019,"ZMB","Sub-Saharan Africa","Upper middle income","IDA","Others","(ZMB, 2019)",78.8
+"131","ZW","Zimbabwe",2835.94853189544,2019,"ZWE","Sub-Saharan Africa","Upper middle income","Blend","Others","(ZWE, 2019)",86.9

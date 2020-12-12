@@ -1,12 +1,40 @@
-# # This file downloads the latest WDI indicators in a local, cached copy. It
-# then creates a tibble of country codes and country names only for Small Island
-# Developing States (SIDS), a UN concept that must be made to work with our
-# World Bank's WDI nomenclature.
+# Ce fichier crée un tableau des pays et des groupements régionaux auxquels ils
+# appartiennent, que ce soit à l'ONU, à l'OCDE ou à la BM.
 
 
-# ---- Downloading the latest WB datasets -----
-new_cache <- WDIcache()
-cache("new_cache")
+# ---- Faire un tableau à partir des PEID du CAD et des pays de la BM ----
+
+# Téléchargement de la liste des indicateurs de la BM, qu'on met en cache.
+cache_wdi <- WDIcache() # À éliminer progressivement
+cache_wbstats <- wbstats::wb_cache()
+cache("wdi_cache")
+cache("cache_wbstats")
+
+# On télécharge un indicateur bidon de la BM et on ne garde que les descripteurs
+pays <- WDI(country = "all", indicator = "NY.GDP.PCAP.PP.KD", start = 2019, end = 2019, extra = TRUE, cache = cache_wdi)
+pays <- pays %>% select(country, 
+                        iso2c,
+                        iso3c,
+                        region,
+                        income,
+                        lending)
+
+# Enlever les agrégats et ne garder que les pays
+pays <- pays %>% filter(region != "Aggregates") 
+
+# On fait des colonnes de facteurs 
+pays$income <- factor(pays$income, ordered = FALSE)
+pays$income <- ordered(pays$income, levels = c("Low income",
+                                               "Lower middle income", 
+                                               "Upper middle income", 
+                                               "High income"))        
+
+pays$lending <- factor(pays$lending, levels = c("IDA", 
+                                                "Blend", 
+                                                "IBRD", 
+                                                "Not classified"), 
+                       ordered = FALSE)
+pays$region <- factor(pays$region)
 
 
 # ---- Sous-ensemble des PEID du Comité d'aide au développement (OCDE) ----
@@ -49,94 +77,86 @@ DAC_SIDS <- c(
   "TON"
 )
 
-# ---- Faire un tableau à partir des PEID du CAD et des pays de la BM ----
+pays <- pays %>% 
+  mutate(SIDS = (if_else(iso3c %in% DAC_SIDS, "SIDS", "Non-SIDS", missing = NA_character_)))
 
-# On télécharge un indicateur bidon de la BM et on ne garde que les descripteurs
-peid <- WDI(country = "all", indicator = "NY.GDP.PCAP.PP.KD", start = 2019, end = 2019, extra = TRUE, cache = new_cache)
-peid <- peid %>% select(country, 
-                        iso2c,
-                        iso3c,
-                        region,
-                        income,
-                        lending)
-peid <- peid %>% mutate(tmp = (iso3c %in% DAC_SIDS))
-
-# On crée une petite table de correspondances
-temp <- data_frame(tmp = c(TRUE, FALSE), SIDS = c("SIDS", "Others"))
-
-# ... que l'on fusionne au tableau précédent
-peid <- left_join(peid, temp) %>% 
-  select(-tmp)
-peid <- peid %>% filter(region != "Aggregates") # Enlever les agrégats et ne garder que les pays
-
-# ---- On fait des colonnes de facteurs ----
-peid$income <- factor(peid$incom, ordered = FALSE)
-peid$income <- ordered(peid$income, levels = c( "Low Income", "Lower middle income",
-                                               "Upper middle income", 
-                                               "High income"))
-peid$lending <- factor(peid$lending, levels = c("IDA", "Blend", "IBRD"), ordered = FALSE)
-peid$SIDS <- factor(peid$SIDS, levels = c("SIDS", "Others"), ordered = FALSE)
-peid$region <- factor(peid$region)
-
-#---- Cleaning up ----
-cache("peid")
-rm(temp)
+pays$SIDS <- factor(pays$SIDS, levels = c("SIDS", "Non-SIDS"), ordered = FALSE)
 
 
-# ---- ARCHIVE: Preparing UN country classification -----
+# ---- Préparation de la classification de l'ONU ---- 
 
-# # This enables us to create a list of SIDS vs non-SIDS
-# 
-# url <- "https://unctadstat.unctad.org/EN/Classifications/MemoItems_DevelopmentStatus_Hierarchy.xls"
-# destfile <- "./tmp/dev_status.xls"
-# download.file(url = url, destfile = destfile)
-# z<- read_excel(destfile, skip = 4)
-# z$Code <- as.numeric(z$Code)
-# 
-# which(z$Code > 1000) # Codes above 1000 denote a regrouping of countries
-# # We must capture only those between header 2050 and the end of the table.
-# z %>% filter(Code > 1000)
-# 
-# # La liste de la CNUCED --  ce n'est pas celle qu'on utilise
-# # sids <- z[(which(z$Code == 2231) + 1):(which(z$Code == 2250) - 1) , ]
-# 
-# # La liste de UNOHRLLS
-# sids <- z[(which(z$Code == 2250) + 1):dim(z)[1], ]
-# sids <- rename(sids, un = Code)
-# sids <- rename(sids, un.name.en = Label)
-# sids <- sids %>% filter(un < 1000)
-# rm(z)
-# 
-# # Converting UN country names & codes to WB
-# sids$name <- countrycode(sids$un, origin = "un", destination = "country.name.en")
-# sids$iso3c <- countrycode(sids$un, origin = "un", destination = "iso3c")
-# 
-# 
-# 
-# 
-# # Merging with SIDS
-# states <- left_join(states, sids[, c("iso3c", "dac_sids")], by = "iso3c")
-# 
-# z <- which(is.na(states$dac_sids))
-# states[z, "dac_sids"] <- FALSE
-# rm(z)
-# states <- states %>% rename(SIDS = dac_sids)
-# states[states$SIDS == TRUE, "SIDS"] <- "SIDS"
-# states[states$SIDS == FALSE, "SIDS"] <- "Others"
-# 
-# # Cleaning Up
-# states <- states %>% filter(region != "Aggregates") # Enlever les agrégats et ne garder que les pays
-# #states[states$lending == "Not classified", "lending"] <- NA
-# 
-# states$income <- factor(states$income, labels = c("Low Income", "Lower middle income", 
-#                                                             "Upper middle income", "High income"), 
-#                              ordered = FALSE)
-# states$lending <- factor(states$lending, levels = c("IDA", "Blend", "IBRD"), ordered = FALSE)
-# states$SIDS <- factor(states$SIDS, levels = c("SIDS", "Others"), ordered = FALSE)
-# states$region <- factor(states$region)
-# cache("states")
-# rm(destfile)
-# rm(url)
-# 
-# 
+# La classification des PMA, des PEID et des pays enclavés de l'ONU réside dans
+# un fichier Excel. À noter: la CNUCED et l'UNOHRLLS ont chacun la leur, qui
+# comporte respectivement 27 pays et 56 pays.
 
+url <- "https://unctadstat.unctad.org/EN/Classifications/MemoItems_DevelopmentStatus_Hierarchy.xls"
+destfile <- "./tmp/dev_status.xls"
+download.file(url = url, destfile = destfile)
+z<- read_excel(destfile, skip = 4)
+z$Code <- as.numeric(z$Code)
+
+which(z$Code > 1000) # Les codes plus grands que 1000 dénotent des regroupements de pays
+# Voyons ces regroupements
+z %>% filter(Code > 1000)
+
+# PEID: liste de la CNUCED --  vecteur de codes iso3c
+sids_unctad <- z[(which(z$Code == 2231) + 1):(which(z$Code == 2250) - 1) , ]
+sids_unctad <- sids_unctad %>% filter(Code < 1000)
+sids_unctad <- countrycode(sids_unctad$Code, origin = "un", destination =  "iso3c")
+
+# PEID: liste de UNOHRLLS -- vecteur de codes iso3c
+sids_unohrlls <- z[(which(z$Code == 2250) + 1):dim(z)[1], ]
+sids_unohrlls <- sids_unohrlls %>% filter(Code < 1000)
+sids_unohrlls <- countrycode(sids_unohrlls$Code, origin = "un", destination = "iso3c")
+
+# Pays sans littoral -- vecteur de codes iso3c
+lldc <- z[(which(z$Code == 2220) + 1):(which(z$Code == 2230) - 1) , ]
+lldc <- lldc %>% filter(Code < 1000)
+lldc <- countrycode(lldc$Code, origin = "un", destination =  "iso3c")
+
+# Pays les moins avancés
+ldc <- z[(which(z$Code == 2211) + 1):(which(z$Code == 2220) - 1) , ]
+ldc <- ldc %>% filter(Code < 1000) %>% distinct()
+ldc <- countrycode(ldc$Code, origin = "un", destination =  "iso3c")
+
+# On intègre ces quatre catégories au tableau pays
+pays <- pays %>% 
+  mutate(UNOHRLLS = (if_else(iso3c %in% sids_unohrlls, "SIDS", "Non-SIDS", missing = NA_character_)))
+pays <- pays %>% 
+  mutate(UNCTAD = (if_else(iso3c %in% sids_unctad, "SIDS", "Non-SIDS", missing = NA_character_)))
+pays <- pays %>% 
+  mutate(LLDC = (if_else(iso3c %in% lldc, "LLDC", "Non-LLDC", missing = NA_character_)))
+pays <- pays %>% 
+  mutate(LDC = (if_else(iso3c %in% ldc, "LDC", "Non-LDC", missing = NA_character_)))
+
+# On les transfère en facteurs
+pays$UNOHRLLS <- factor(pays$UNOHRLLS, levels = c("SIDS", "Non-SIDS"), ordered = FALSE)
+pays$UNCTAD <- factor(pays$UNCTAD, levels = c("SIDS", "Non-SIDS"), ordered = FALSE)
+pays$LLDC <- factor(pays$LLDC, levels = c("LLDC", "Non-LLDC"), ordered = FALSE)
+pays$LDC <- factor(pays$LDC, levels = c("LDC", "Non-LDC"), ordered = FALSE)
+
+
+# ---- États fragiles, classification de la BM ----
+
+url <- "https://databank.worldbank.org/data/download/site-content/CLASS.xls"
+destfile <- "./tmp/bm_categories_economies.xls"
+download.file(url = url, destfile = destfile)
+z<- read_excel(destfile, sheet = 3)
+
+fcas <- z %>% 
+  filter(GroupCode == "FCS") %>% 
+  select(CountryCode)
+fcas <- fcas[["CountryCode"]]
+
+# On intègre au tableau pays
+pays <- pays %>% 
+  mutate(FCAS = (if_else(iso3c %in% fcas, "FCAS", "Non-FCAS", missing = NA_character_)))
+
+# En facteur
+pays$FCAS <- factor(pays$FCAS, levels = c("FCAS", "Non-FCAS"), ordered = FALSE)
+
+# ---- Nettoyage et cache ---- 
+cache("pays")
+rm(destfile)
+rm(url)
+rm(DAC_SIDS)

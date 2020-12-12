@@ -1,0 +1,11 @@
+country,iso3c,region,income,lending,IMF,FATF,EU
+Belize,BLZ,Latin America & Caribbean,Upper middle income,IBRD,TRUE,TRUE,FALSE
+Dominica,DMA,Latin America & Caribbean,Upper middle income,Blend,FALSE,TRUE,FALSE
+Fiji,FJI,East Asia & Pacific,Upper middle income,Blend,FALSE,FALSE,TRUE
+Marshall Islands,MHL,East Asia & Pacific,Upper middle income,IDA,TRUE,TRUE,FALSE
+Mauritius,MUS,Sub-Saharan Africa,High income,IBRD,TRUE,TRUE,FALSE
+Nauru,NRU,East Asia & Pacific,High income,IBRD,TRUE,TRUE,FALSE
+Palau,PLW,East Asia & Pacific,High income,IBRD,FALSE,TRUE,TRUE
+Seychelles,SYC,Sub-Saharan Africa,High income,IBRD,TRUE,TRUE,TRUE
+Vanuatu,VUT,East Asia & Pacific,Lower middle income,IDA,TRUE,TRUE,TRUE
+Samoa,WSM,East Asia & Pacific,Upper middle income,IDA,TRUE,TRUE,FALSE

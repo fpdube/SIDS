@@ -1,0 +1,55 @@
+"","un","un.name.en","name","iso3c","dac_sids"
+"1",16,"American Samoa","American Samoa","ASM",FALSE
+"2",660,"Anguilla","Anguilla","AIA",FALSE
+"3",28,"Antigua and Barbuda","Antigua & Barbuda","ATG",TRUE
+"4",533,"Aruba","Aruba","ABW",FALSE
+"5",44,"Bahamas","Bahamas","BHS",FALSE
+"6",48,"Bahrain","Bahrain","BHR",FALSE
+"7",52,"Barbados","Barbados","BRB",FALSE
+"8",84,"Belize","Belize","BLZ",TRUE
+"9",60,"Bermuda","Bermuda","BMU",FALSE
+"10",92,"British Virgin Islands","British Virgin Islands","VGB",FALSE
+"11",132,"Cabo Verde","Cape Verde","CPV",TRUE
+"12",136,"Cayman Islands","Cayman Islands","CYM",FALSE
+"13",174,"Comoros","Comoros","COM",TRUE
+"14",184,"Cook Islands","Cook Islands","COK",TRUE
+"15",192,"Cuba","Cuba","CUB",TRUE
+"16",531,"Curaçao","Curaçao","CUW",FALSE
+"17",212,"Dominica","Dominica","DMA",TRUE
+"18",214,"Dominican Republic","Dominican Republic","DOM",TRUE
+"19",242,"Fiji","Fiji","FJI",TRUE
+"20",258,"French Polynesia","French Polynesia","PYF",FALSE
+"21",308,"Grenada","Grenada","GRD",TRUE
+"22",316,"Guam","Guam","GUM",FALSE
+"23",624,"Guinea-Bissau","Guinea-Bissau","GNB",TRUE
+"24",328,"Guyana","Guyana","GUY",TRUE
+"25",332,"Haiti","Haiti","HTI",TRUE
+"26",388,"Jamaica","Jamaica","JAM",TRUE
+"27",296,"Kiribati","Kiribati","KIR",TRUE
+"28",462,"Maldives","Maldives","MDV",TRUE
+"29",584,"Marshall Islands","Marshall Islands","MHL",TRUE
+"30",480,"Mauritius","Mauritius","MUS",TRUE
+"31",583,"Micronesia (Federated States of)","Micronesia (Federated States of)","FSM",TRUE
+"32",500,"Montserrat","Montserrat","MSR",TRUE
+"33",520,"Nauru","Nauru","NRU",TRUE
+"34",540,"New Caledonia","New Caledonia","NCL",FALSE
+"35",570,"Niue","Niue","NIU",TRUE
+"36",580,"Northern Mariana Islands","Northern Mariana Islands","MNP",FALSE
+"37",585,"Palau","Palau","PLW",TRUE
+"38",598,"Papua New Guinea","Papua New Guinea","PNG",TRUE
+"39",659,"Saint Kitts and Nevis","St. Kitts & Nevis","KNA",FALSE
+"40",662,"Saint Lucia","St. Lucia","LCA",TRUE
+"41",670,"Saint Vincent and the Grenadines","St. Vincent & Grenadines","VCT",TRUE
+"42",882,"Samoa","Samoa","WSM",TRUE
+"43",678,"Sao Tome and Principe","São Tomé & Príncipe","STP",TRUE
+"44",690,"Seychelles","Seychelles","SYC",TRUE
+"45",702,"Singapore","Singapore","SGP",FALSE
+"46",534,"Sint Maarten (Dutch part)","Sint Maarten","SXM",FALSE
+"47",90,"Solomon Islands","Solomon Islands","SLB",TRUE
+"48",740,"Suriname","Suriname","SUR",TRUE
+"49",626,"Timor-Leste","Timor-Leste","TLS",TRUE
+"50",776,"Tonga","Tonga","TON",TRUE
+"51",780,"Trinidad and Tobago","Trinidad & Tobago","TTO",FALSE
+"52",796,"Turks and Caicos Islands","Turks & Caicos Islands","TCA",FALSE
+"53",798,"Tuvalu","Tuvalu","TUV",TRUE
+"54",548,"Vanuatu","Vanuatu","VUT",TRUE

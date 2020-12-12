@@ -1,0 +1,53 @@
+---
+title: "External Debt Stock to China"
+author: "François-Philippe Dubé"
+date: "15/10/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# External Debt Stock to China -- Exploratory Analysis
+
+Finding relevant time series:
+```{r, echo=FALSE}
+library(ProjectTemplate)
+load.project()
+```
+```{r}
+indicators <- WDIsearch(string = "External debt stocks.*current.*", field = "name", short = FALSE, cache = new_cache) %>%
+  as_tibble() %>% 
+  filter(sourceDatabase == "International Debt Statistics") 
+
+indicators %>% select(indicator, name)
+```
+Relevant time series:
+DT.DOD.ALL.CD
+DT.DOD.DECT.CD
+DT.DOD.DPPG.CD
+DT.DOD.DEGG.CD
+DT.DOD.DEPS.CD
+DT.DOD.DOPS.CD
+DT.DOD.PRPG.CD
+
+```{r}
+debt <- WDI(
+  country = "all",
+  indicator = c(
+    "concessional" =  "DT.DOD.ALL.CD",
+    "total_external" = "DT.DOD.DECT.CD",
+    "public+guaranteed" = "DT.DOD.DPPG.CD",
+    "gen_gov" = "DT.DOD.DEGG.CD",
+    "public_sector" = "DT.DOD.DEPS.CD",
+    "other_pub" = "DT.DOD.DOPS.CD",
+    "private_guar_by_pub" = "DT.DOD.PRPG.CD"
+  ),
+  start = 2010,
+  end = year(now()) - 1,
+  extra = FALSE,
+  cache = new_cache
+)
+```
+
